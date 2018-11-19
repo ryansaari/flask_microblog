@@ -164,3 +164,6 @@ out/
 # Ignoring virtual environment
 logs/*
 venv/*
+
+# Ignoring database
+app.db
