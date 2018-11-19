@@ -159,3 +159,8 @@ docs/includes
 spec/fixtures/evil-files/
 out/
 /electron/
+
+# Ignoring logs
+# Ignoring virtual environment
+logs/*
+venv/*
