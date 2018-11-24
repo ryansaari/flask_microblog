@@ -3,6 +3,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_mail import Mail
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
@@ -10,8 +11,11 @@ import os
 app = Flask(__name__)
 app.config.from_object(Config)
 
+# create an instance of each flask app
+mail = Mail(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+login = LoginManager(app)
 
 # allow Flask-Login to know what is the view function that handles logins
 # 'login' here is the endpoint for the login view
