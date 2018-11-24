@@ -12,7 +12,7 @@ import os
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# create an instance of each flask app
+# Create an instance of each Flask extension
 mail = Mail(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -21,7 +21,6 @@ boostrap = Bootstrap(app)
 
 # allow Flask-Login to know what is the view function that handles logins
 # 'login' here is the endpoint for the login view
-login = LoginManager(app)
 login.login_view = 'login'
 
 # add an smtphandler instance to the flask logger object
