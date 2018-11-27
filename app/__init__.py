@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -28,12 +28,6 @@ babel = Babel(app)
 login.login_view = 'login'
 login.login_message = _l('Please log in to access this page.')
 
-# this decorated function is invoked for each request to select a language
-# translation for use for that request
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
 # add an smtphandler instance to the flask logger object
 if not app.debug:
     if app.config['MAIL_SERVER']:
@@ -61,5 +55,10 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Microblog startup')
 
+# this decorated function is invoked for each request to select a language
+# translation for use for that request
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 from app import routes, models, errors
