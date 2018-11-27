@@ -1,0 +1,10 @@
+# get all the marked text that needs to be translated into a .pot file
+
+(venv) $ pybabel extract -F babel.cfg -k _l -o messages.pot .
+(venv) $ pybabel update -i messages.pot -d app/translations
+
+flask translate init <language-code>
+
+flask translate update
+
+flask translate compile
