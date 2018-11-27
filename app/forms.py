@@ -5,8 +5,8 @@ from app.models import User
 from flask_babel import _, lazy_gettext as _l
 
 class LoginForm(FlaskForm):
-    username = StringField(_('Username')), validators=[DataRequired()])
-    password = PasswordField(_('Password')), validators=[DataRequired()])
+    username = StringField(_('Username'), validators=[DataRequired()])
+    password = PasswordField(_('Password'), validators=[DataRequired()])
     remember_me = BooleanField(_('Remember Me'))
     submit = SubmitField(_('Sign In'))
 

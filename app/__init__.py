@@ -30,7 +30,7 @@ login.login_message = _l('Please log in to access this page.')
 
 # this decorated function is invoked for each request to select a language
 # translation for use for that request
-@babel.localselector
+@babel.localeselector
 def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
